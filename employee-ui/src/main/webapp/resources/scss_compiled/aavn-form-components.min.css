@@ -1,0 +1,429 @@
+.aavn-page-heading {
+	margin: 1.5rem 0 1rem 0;
+	text-align: center;
+	color: #02a9f7;
+	font-size: 3rem;
+	width: 100%
+}
+
+.aavn-heading-lv1 {
+	margin: .5rem 0 .5rem 0;
+	font-size: 2rem
+}
+
+.aavn-heading-lv2 {
+	margin: 2rem 0 .5rem 0;
+	border-bottom: 1px solid #424242;
+	font-size: 1.5rem
+}
+
+.aavn-form-component ::placeholder {
+	color: #9e9e9e
+}
+
+.aavn-form-component .aavn-label {
+	font-size: .8rem;
+	color: #9e9e9e
+}
+
+.aavn-form-component .aavn-input-field .active-label-color {
+	color: #4dc3f9 !important;
+}
+
+.aavn-form-component .aavn-input-field .aavn-input-text.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus
+	{
+	border-bottom: 1px solid #4dc3f9;
+	box-shadow: unset
+}
+
+.aavn-form-component .aavn-input-field .aavn-input-number .ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus
+	{
+	border-bottom: 1px solid #4dc3f9;
+	box-shadow: unset
+}
+
+.aavn-form-component .aavn-input-field .aavn-error-msg-input-field {
+	color: #fc4a1a;
+	font-size: .9rem;
+	font-style: italic;
+	position: absolute;
+	top: 45px;
+	right: 0
+}
+
+.aavn-form-component .aavn-input-field .aavn-remaining-msg-input-text-area
+	{
+	font-size: .9rem;
+	font-style: italic;
+	position: relative;
+	top: -5px;
+	float: left
+}
+
+.aavn-form-component .aavn-input-field .aavn-error-msg-input-text-area {
+	color: #fc4a1a;
+	font-size: .9rem;
+	font-style: italic;
+	position: relative;
+	top: -5px;
+	float: right
+}
+
+.aavn-form-component .aavn-select-box {
+	border-top: 0;
+	border-left: none;
+	border-right: 0;
+	border-radius: unset
+}
+
+.aavn-form-component .aavn-select-and-input-extendable .aavn-select-box
+	{
+	top: 9px;
+	width: 100%
+}
+
+.aavn-form-component .aavn-select-and-input-extendable .aavn-input-field
+	{
+	width: 100%
+}
+
+.aavn-form-component .aavn-select-and-input-extendable .aavn-delete-circle-button
+	{
+	margin-top: 25px
+}
+
+.aavn-form-component .aavn-auto-complete .ui-autocomplete-input.ui-autocomplete-dd-input.ui-inputfield.ui-widget.ui-state-default.ui-corner-left
+	{
+	width: auto;
+	height: auto
+}
+
+.aavn-form-component .aavn-auto-complete .ui-autocomplete-input.ui-autocomplete-dd-input.ui-inputfield.ui-widget.ui-state-default.ui-corner-left.ui-state-focus
+	{
+	border-top: 0;
+	border-left: none;
+	border-right: 0;
+	border-bottom: 1px solid #4dc3f9 !important;
+	box-shadow: unset
+}
+
+.aavn-form-component .aavn-auto-complete .ui-autocomplete-dropdown.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only
+	{
+	background-color: unset;
+	color: #333;
+	border: unset;
+	position: absolute;
+	right: 1px
+}
+
+.aavn-form-component .aavn-auto-complete .ui-autocomplete-dropdown.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only.ui-state-focus
+	{
+	outline: unset
+}
+
+.aavn-form-component .aavn-radio-box {
+	border-collapse: unset
+}
+
+.aavn-form-component .aavn-radio-box label {
+	font-size: 1rem;
+	color: #333
+}
+
+.aavn-form-component .aavn-checkbox {
+	border-collapse: unset
+}
+
+.aavn-form-component .aavn-checkbox label {
+	font-size: 1rem;
+	color: #333
+}
+
+.aavn-form-component .aavn-calendar .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker
+	{
+	width: auto
+}
+
+.aavn-form-component .aavn-calendar .ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker.ui-state-focus
+	{
+	border-bottom: 1px solid #4dc3f9;
+	box-shadow: unset
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-buttonbar.ui-widget-header.ui-corner-top
+	{
+	border: 0;
+	background-color: white
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-buttonbar.ui-widget-header.ui-corner-top .ui-button.ui-state-focus
+	{
+	outline: 0
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-content.ui-widget-content.ui-corner-bottom
+	{
+	border: 0
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-content.ui-widget-content.ui-corner-bottom .ui-fileupload-files .ui-fileupload-row div:nth-child(1)
+	{
+	display: none
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-content.ui-widget-content.ui-corner-bottom .ui-fileupload-files .ui-fileupload-row div:nth-child(2)
+	{
+	word-break: break-word
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-content.ui-widget-content.ui-corner-bottom .ui-fileupload-files .ui-fileupload-row div:nth-child(4)
+	{
+	display: none
+}
+
+.aavn-form-component .aavn-file-upload .ui-fileupload-content.ui-widget-content.ui-corner-bottom .ui-fileupload-files .ui-fileupload-row div:nth-child(5)
+	{
+	display: none
+}
+
+.aavn-form-component .aavn-active-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-form-component .aavn-active-button.ui-state-focus {
+	outline: unset
+}
+
+.aavn-form-component .aavn-inactive-button {
+	background-color: #7a7a7a;
+	border-color: #7a7a7a
+}
+
+.aavn-form-component .aavn-inactive-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-form-component .aavn-inactive-button.ui-state-focus {
+	background-color: #555;
+	border-color: #555;
+	outline: unset
+}
+
+.aavn-form-component .aavn-inactive-button.ui-state-hover {
+	background-color: #686868;
+	border-color: #686868
+}
+
+.aavn-form-component .aavn-inactive-button.ui-state-active {
+	background-color: #424242;
+	border-color: #424242
+}
+
+.aavn-form-component .aavn-delete-circle-button {
+	border-radius: 50%;
+	width: 25px !important;
+	height: 25px !important;
+	background-color: #fd805e;
+	border-color: #fd805e
+}
+
+.aavn-form-component .aavn-delete-circle-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-form-component .aavn-delete-circle-button.ui-state-focus {
+	background-color: #fc5c30;
+	border-color: #fc5c30;
+	outline: unset
+}
+
+.aavn-form-component .aavn-delete-circle-button.ui-state-hover {
+	background-color: #fd6e48;
+	border-color: #fd6e48
+}
+
+.aavn-form-component .aavn-delete-circle-button.ui-state-active {
+	background-color: #fc4a1a;
+	border-color: #fc4a1a
+}
+
+.aavn-form-component .aavn-add-circle-button {
+	border-radius: 50%;
+	width: 25px !important;
+	height: 25px !important;
+	bottom: 2px
+}
+
+.aavn-form-component .aavn-add-circle-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-form-component .aavn-data-table .ui-paginator.ui-paginator-top.ui-widget-header
+	{
+	position: relative;
+	border: 0;
+	margin-bottom: .1em
+}
+
+.aavn-form-component .aavn-data-table .ui-paginator.ui-paginator-top.ui-widget-header .ui-paginator-current
+	{
+	position: absolute;
+	left: 0;
+	color: #02a9f7
+}
+
+.aavn-form-component .aavn-data-table .ui-paginator.ui-paginator-top.ui-widget-header .ui-paginator-rpp-options.ui-widget.ui-state-default
+	{
+	width: unset;
+	height: 2.643em
+}
+
+.aavn-form-component .aavn-data-table table thead th {
+	background-color: #4dc3f9;
+	border-color: white;
+	color: white;
+	outline: unset
+}
+
+.aavn-form-component .aavn-data-table table tbody tr {
+	border: 0;
+	border-top: 1px solid #cecece
+}
+
+.aavn-form-component .aavn-data-table table tbody tr td {
+	padding: 1em
+}
+
+.aavn-form-component .aavn-data-table table tbody tr.ui-datatable-even {
+	background-color: white
+}
+
+.aavn-form-component .aavn-data-table table tbody tr:hover {
+	background-color: #cceefd
+}
+
+.aavn-modal-dialog.ui-dialog .ui-dialog-titlebar {
+	background-color: #02a9f7;
+	border: 1px solid #02a9f7;
+	color: white
+}
+
+.aavn-modal-dialog.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon
+	{
+	color: white
+}
+
+.aavn-confirm-dialog.ui-dialog .ui-dialog-titlebar {
+	background-color: #02a9f7;
+	border: 1px solid #02a9f7;
+	color: white
+}
+
+.aavn-confirm-dialog.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon
+	{
+	color: white
+}
+
+.aavn-confirm-dialog.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon.ui-state-hover
+	{
+	color: white
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-active-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-active-button.ui-state-focus {
+	outline: unset
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-inactive-button {
+	background-color: #7a7a7a;
+	border-color: #7a7a7a
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-inactive-button .ui-icon {
+	font-size: 100%
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-inactive-button.ui-state-focus {
+	background-color: #555;
+	border-color: #555;
+	outline: unset
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-inactive-button.ui-state-hover {
+	background-color: #686868;
+	border-color: #686868
+}
+
+.aavn-confirm-dialog.ui-dialog .aavn-inactive-button.ui-state-active {
+	background-color: #424242;
+	border-color: #424242
+}
+
+.ui-dialog .ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top.ui-draggable-handle
+	{
+	background-color: #02a9f7;
+	border: 1px solid #02a9f7;
+	color: white
+}
+
+.ui-dialog .ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top.ui-draggable-handle .ui-dialog-titlebar-icon.ui-dialog-titlebar-close.ui-corner-all
+	{
+	color: white
+}
+
+.aavn-spinner {
+	display: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	cursor: wait;
+	background: rgba(0, 0, 0, 0.2);
+	justify-content: center;
+	align-items: center
+}
+
+.aavn-spinner .content {
+	color: white;
+	text-align: center
+}
+
+.aavn-spinner .content i {
+	color: #4dc3f9
+}
+
+.aavn-spinner .content .message {
+	margin-top: 25px;
+	font-size: 1.5rem
+}
+
+.aavn-spinner.active {
+	display: flex
+}
+
+.aavn-progress-bar.ui-progressbar.ui-progressbar-indeterminate {
+	height: 3px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%
+}
+
+.aavn-progress-bar-container {
+	display: none;
+	position: fixed;
+	top: 3px;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	cursor: wait;
+	background: rgba(0, 0, 0, 0.2)
+}
+
+.aavn-progress-bar-container.active {
+	display: block
+}

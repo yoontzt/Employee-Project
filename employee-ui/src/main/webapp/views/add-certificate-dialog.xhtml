@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:of="http://omnifaces.org/functions">
+
+	<title>Add New Education Certificate</title>
+	<h:outputStylesheet library="library"
+		name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="scss_compiled"
+		name="aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="aavn.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="updateform.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.min.css"></h:outputStylesheet>
+
+	<h:form id="addCertificateForm" styleClass="aavn-form-component">
+
+		<div class="ui-g-12">
+			<p:outputPanel styleClass="input-field aavn-input-field top">
+				<p:inputText id="certificateName"
+					styleClass="aavn-input-text input-text-size pad-7"
+					value="#{certificateController.certificate.nameOfCertificate}"
+					tabindex="1" required="true"
+					requiredMessage="Please enter certificate name">
+					<p:focus for="certificateName"></p:focus>
+					<p:ajax update="@next @this" event="change" />
+				</p:inputText>
+				<label class="aavn-input-text-label active pad-7"
+					for="certificateName">Name of Certificate(Max Length is 255
+					characters)</label>
+				<p:message for="certificateName" display="text"
+					styleClass="ui-message-error" />
+			</p:outputPanel>
+		</div>
+
+		<div class="ui-g-12">
+			<div class="ui-g-3 pad-left-0">
+				<p:outputPanel styleClass="input-field aavn-input-field">
+					<p:inputMask id="certificateYear"
+						styleClass="aavn-input-text input-text-size"
+						value="#{certificateController.certificate.achievedTime}"
+						tabindex="1" required="true"
+						requiredMessage="Please enter year of achieved cerificate"
+						mask="a**-9999">
+						<p:ajax update="@next @this" event="change" />
+					</p:inputMask>
+					<label class="aavn-input-text-label active" for="certificateYear">Achieved
+						Time(Eg:Aug-2017)</label>
+					<p:message for="certificateYear" display="text" />
+				</p:outputPanel>
+			</div>
+			<div class="ui-g-9 pad-right-0">
+				<p:outputPanel styleClass="input-field aavn-input-field">
+					<p:inputText id="certificateType"
+						styleClass="aavn-input-text input-text-size"
+						value="#{certificateController.certificate.typeOfCertificate}"
+						tabindex="1" required="true"
+						requiredMessage="Please enter type of achieved certificate">
+						<p:ajax update="@next @this" event="change" />
+					</p:inputText>
+					<p:message for="certificateType" display="text" />
+					<label class="aavn-input-text-label active" for="inputText">Type
+						of Certificate(Max Length is 100 characters)</label>
+				</p:outputPanel>
+			</div>
+		</div>
+
+		<div class="ui-g-12">
+			<div class="ui-g-8"></div>
+			<div class="ui-g-4">
+				<p:commandButton action="#{certificateController.addCertificate}"
+					icon="fa fa-save" value="Save" tabindex="3"
+					update="addCertificateForm"
+					styleClass="aavn-active-button edit-button">
+				</p:commandButton>
+				<p:commandButton
+					action="#{certificateController.closeAddCertificateDialog}"
+					icon="fa fa-times" value="Cancel" tabindex="4"
+					update="addCertificateForm" immediate="true"
+					styleClass="aavn-inactive-button edit-button">
+					<p:ajax event="click" update="addCertificateForm"
+						listener="#{certificateController.clearCertificateDialog}" />
+				</p:commandButton>
+			</div>
+		</div>
+	</h:form>
+
+	<h:outputScript library="js" name="aavn-script.min.js"></h:outputScript>
+</ui:composition>

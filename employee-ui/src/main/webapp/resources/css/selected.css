@@ -1,0 +1,24 @@
+.col {
+	height: 200%;
+}
+
+.row .col.m6 {
+	width: 50%;
+	margin-left: auto;
+	left: auto;
+	right: auto;
+}
+
+.detail-left {
+	padding-right: 30px
+}
+
+  .row .col.offset-m6 {
+    margin-left: 50%;
+  }
+  .row .col.pull-m6 {
+    right: 50%;
+  }
+  .row .col.push-m6 {
+    left: 50%;
+  }

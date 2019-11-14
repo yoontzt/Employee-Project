@@ -1,0 +1,416 @@
+@import 'aavn-global-variables';
+
+.aavn-page-heading {
+	margin: 1.5rem 0 1rem 0;
+	text-align: center;
+	color: $aavn-primary-color;
+	font-size: 3rem;
+	width: 100%;
+}
+
+.aavn-heading-lv1 {
+	margin: 0.5rem 0 0.5rem 0;
+	font-size: 2rem;
+}
+
+.aavn-heading-lv2 {
+	margin: 1.5rem 0 0.5rem 0;
+	border-bottom: 1px solid $aavn-black-color;
+	font-size: 1.5rem;
+	
+}
+
+.aavn-form-component{
+	/* Custom the color of place holder text in some input field */
+	::placeholder {
+		color: #9e9e9e;
+	}
+
+	.aavn-label {
+		font-size: 0.8rem;
+    	color: #9e9e9e;
+	}
+
+	/* Form component: InputText, InputNumber */
+	.aavn-input-field {
+		.active-label-color {
+			color: $aavn-color !important;
+		}
+
+		.aavn-input-text.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus {
+			border-bottom: 1px solid $aavn-color;
+			box-shadow: unset;
+		}
+		
+		.aavn-input-text.ui-inputfield.ui-password.ui-widget.ui-state-default.ui-corner-all.ui-state-focus {
+			border-bottom: 1px solid $aavn-color;
+			box-shadow: unset;
+		}
+		
+		.aavn-input-number {
+			.ui-inputfield.ui-inputtext.ui-widget.ui-state-default.ui-corner-all.ui-state-focus {
+				border-bottom: 1px solid $aavn-color;
+				box-shadow: unset;
+			}
+		}
+		
+		.aavn-error-msg-input-field {
+			color: $aavn-error-color;
+			font-size: 0.9rem;
+			font-style: italic;
+			position: absolute;
+			top: 45px;
+			right: 0;
+		}
+
+		.aavn-remaining-msg-input-text-area {
+			font-size: 0.9rem;
+			font-style: italic;
+			position: relative;
+			top: -5px;
+			float: left;
+		}
+
+		.aavn-error-msg-input-text-area {
+			color: $aavn-error-color;
+			font-size: 0.9rem;
+			font-style: italic;
+			position: relative;
+			top: -5px;
+			float: right;
+		}
+	}
+
+	/* Form component: SeclectOneMenu */
+	.aavn-select-box {
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-radius: unset;
+	}
+
+	/* Form component: SeclectOneMenu and Input Text */
+	.aavn-select-and-input-extendable{
+		.aavn-select-box{
+			top: 9px;
+			width: 100%;
+		}
+		.aavn-input-field{
+			width: 100%;
+		}
+		.aavn-delete-circle-button{
+			margin-top: 25px;
+		}
+	}
+
+	/* Form component: AutoComplete */
+	.aavn-auto-complete {
+		.ui-autocomplete-input.ui-autocomplete-dd-input.ui-inputfield.ui-widget.ui-state-default.ui-corner-left {
+			width: auto;
+			height: auto;
+		}
+		.ui-autocomplete-input.ui-autocomplete-dd-input.ui-inputfield.ui-widget.ui-state-default.ui-corner-left.ui-state-focus {
+		
+			border-top: none;
+			border-left: none;
+			border-right: none;
+			border-bottom: 1px solid $aavn-color !important;
+			box-shadow: unset;
+		}
+		.ui-autocomplete-dropdown.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only {
+			background-color: unset;
+			color: #333;
+			border: unset;
+			position: absolute;
+			right: 1px;
+		}
+		.ui-autocomplete-dropdown.ui-button.ui-widget.ui-state-default.ui-corner-right.ui-button-icon-only.ui-state-focus {
+			outline: unset;
+		}
+	}
+
+	/* Form component: SelectOneRadio */
+	.aavn-radio-box {
+		border-collapse: unset;
+		label {
+			font-size: 1rem;
+			color: #333;
+		}
+	}
+
+	/* Form component: SelectManyCheckBox */
+	.aavn-checkbox {
+		border-collapse: unset;
+		label {
+			font-size: 1rem;
+			color: #333;
+		}
+	}
+
+	/* Form component: Calendar */
+	.aavn-calendar {
+		.ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker {
+			width: auto;
+		}
+		.ui-inputfield.ui-widget.ui-state-default.ui-corner-all.hasDatepicker.ui-state-focus {
+			border-bottom: 1px solid $aavn-color;
+			box-shadow: unset;
+		}
+	}
+
+	/* Form component: File Upload */
+	.aavn-file-upload {
+		.ui-fileupload-buttonbar.ui-widget-header.ui-corner-top {
+			border: none;
+			background-color: $aavn-white-color;
+			.ui-button.ui-state-focus {
+				outline: none;
+			}
+		}
+		.ui-fileupload-content.ui-widget-content.ui-corner-bottom {
+			border: none;
+			.ui-fileupload-files .ui-fileupload-row {
+				div:nth-child(1) {
+					display: none;
+				}
+				div:nth-child(2) {
+					word-break: break-word;
+				}
+				div:nth-child(4) {
+					display: none;
+				}
+				div:nth-child(5) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/* Form component: CommandButton */
+	.aavn-active-button {
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	.aavn-active-button.ui-state-focus {
+		outline: unset;
+	}
+
+	.aavn-inactive-button {
+		background-color: $aavn-inactive-color;
+		border-color: $aavn-inactive-color;
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	.aavn-inactive-button.ui-state-focus {
+		background-color: $aavn-inactive-focus-color;
+		border-color: $aavn-inactive-focus-color;
+		outline: unset;
+	}
+	.aavn-inactive-button.ui-state-hover {
+		background-color: $aavn-inactive-hover-color;
+		border-color: $aavn-inactive-hover-color;
+	}
+	.aavn-inactive-button.ui-state-active {
+		background-color: $aavn-inactive-active-color;
+		border-color: $aavn-inactive-active-color;
+	}
+	
+	.aavn-delete-circle-button{
+			border-radius: 50%;
+			width: 25px !important;
+			height: 25px !important;
+			background-color: $aavn-delete-button-color;
+			border-color: $aavn-delete-button-color;
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	.aavn-delete-circle-button.ui-state-focus {
+		background-color: $aavn-delete-focus-button-color;
+		border-color: $aavn-delete-focus-button-color;
+		outline: unset;
+	}
+	.aavn-delete-circle-button.ui-state-hover {
+		background-color: $aavn-delete-hover-button-color;
+		border-color: $aavn-delete-hover-button-color;
+	}
+	.aavn-delete-circle-button.ui-state-active {
+		background-color: $aavn-delete-active-button-color;
+		border-color: $aavn-delete-active-button-color;
+    }
+    
+    .aavn-add-circle-button {
+			border-radius: 50%;
+			width: 25px !important;
+			height: 25px !important;
+			bottom: 2px;
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	
+	/* DataTable */
+	.aavn-data-table {
+		.ui-paginator.ui-paginator-top.ui-widget-header {
+			position: relative;
+			border: none;
+			margin-bottom: 0.1em;
+
+			.ui-paginator-current {
+				position: absolute;
+				left: 0;
+				color: $aavn-primary-color;
+			}
+			.ui-paginator-rpp-options.ui-widget.ui-state-default {
+				width: unset;
+				height: 2.643em;
+			}
+		}
+		table {
+			thead {
+				th {
+					background-color: $aavn-color;
+					border-color: $aavn-white-color;
+					color: $aavn-white-color;
+					outline: unset;
+				}
+			}
+			tbody {
+				tr {
+					border: none;
+					border-top: 1px solid #cecece;
+					td {
+						padding: 1em;
+					}
+				}
+				tr.ui-datatable-even {
+					background-color: $aavn-white-color;
+				}
+				tr:hover {
+					background-color: #cceefd;
+				}
+			} 
+		}
+	}
+}
+
+/* Modal Dialog */
+.aavn-modal-dialog.ui-dialog {
+	.ui-dialog-titlebar {
+		background-color: $aavn-primary-color;
+		border: 1px solid $aavn-primary-color;
+		color: $aavn-white-color;
+		.ui-dialog-titlebar-icon {
+			color: $aavn-white-color;
+		}
+	}
+}
+
+/* Confirm Dialog */
+.aavn-confirm-dialog.ui-dialog {
+	.ui-dialog-titlebar {
+		background-color: $aavn-primary-color;
+		border: 1px solid $aavn-primary-color;
+		color: $aavn-white-color;
+		.ui-dialog-titlebar-icon {
+			color: $aavn-white-color;
+		}
+		.ui-dialog-titlebar-icon.ui-state-hover {
+			color: $aavn-white-color;
+		}
+	}
+
+	.aavn-active-button {
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	.aavn-active-button.ui-state-focus {
+		outline: unset;
+	}
+	
+	.aavn-inactive-button {
+		background-color: $aavn-inactive-color;
+		border-color: $aavn-inactive-color;
+		.ui-icon {
+			font-size: 100%;
+		}
+	}
+	.aavn-inactive-button.ui-state-focus {
+		background-color: $aavn-inactive-focus-color;
+		border-color: $aavn-inactive-focus-color;
+		outline: unset;
+	}
+	.aavn-inactive-button.ui-state-hover {
+		background-color: $aavn-inactive-hover-color;
+		border-color: $aavn-inactive-hover-color;
+	}
+	.aavn-inactive-button.ui-state-active {
+		background-color: $aavn-inactive-active-color;
+		border-color: $aavn-inactive-active-color;
+	}
+}
+
+/* Dialog Framework */
+.ui-dialog {
+	.ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top.ui-draggable-handle {
+		background-color: $aavn-primary-color;
+		border: 1px solid $aavn-primary-color;
+		color: $aavn-white-color;
+		.ui-dialog-titlebar-icon.ui-dialog-titlebar-close.ui-corner-all {
+			color: $aavn-white-color;
+		}
+	}
+}
+
+/* Spinner */
+.aavn-spinner {
+	display: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	cursor: wait;
+	background: $aavn-spinner-progressbar-background-color;
+	justify-content: center;
+	align-items: center;
+	.content {
+		color: $aavn-white-color;
+		text-align: center;
+		i {
+			color: $aavn-color;
+		}
+		.message {
+			margin-top: 25px;
+			font-size: 1.5rem;
+		}
+	}
+}
+.aavn-spinner.active {
+	display: flex;
+}
+
+/* Progress Bar */
+.aavn-progress-bar.ui-progressbar.ui-progressbar-indeterminate {
+	height: 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.aavn-progress-bar-container {
+	display: none;
+	position: fixed;
+	top: 3px;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	cursor: wait;
+	background: $aavn-spinner-progressbar-background-color;
+}
+.aavn-progress-bar-container.active {
+	display: block;
+}

@@ -1,0 +1,85 @@
+@import 'recruitment-tool-global-variables';
+
+.recruitment-tool-page-container {
+	width: 100%;
+	min-height: calc(100vh - 61px);
+	position: relative;
+	
+	.ui-dialog{
+		.ui-dialog-content{
+			height: calc(100% - 40px) !important;
+		}
+	}
+	.recruitment-tool-nav-bar {
+		.ui-menu.ui-widget.ui-widget-content.ui-corner-all.ui-helper-clearfix {
+			border: unset;
+			text-align: center;
+		}
+	}
+
+	.recruitment-tool-nav-bar.ui-menu {
+		border-bottom: 1px solid #a6a6a6;
+		border-radius: unset;
+	    border-right: unset;
+	    border-left: unset;
+	}
+
+	.recruitment-tool-nav-bar.ui-menu.ui-menubar {
+		
+		li.current-page {
+			> a.ui-menuitem-link > span,
+			> a.ui-menuitem-link > span.ui-icon,
+			> a.ui-menuitem-link.ui-state-hover > span {
+				color: $recruitment-tool-primary-color;
+			}
+		}
+		a.current-page {
+			&.ui-menuitem-link > span,
+			&.ui-menuitem-link.ui-state-hover > span {
+				color: $recruitment-tool-primary-color;
+			}
+		}
+	}
+	
+	
+	.recruitment-tool-footer-bar {
+		background-color: unset;
+		border-top: 1px solid #a6a6a6;
+		bottom: -61px;
+		padding-bottom: 0;
+		padding-top: 0;
+		position:absolute;
+		width: 100%;
+	
+		.footer-left {
+			text-align: left;
+		}
+		.footer-right {
+			text-align: right;
+		}
+		span {
+			line-height: 1.57;
+			small {
+				margin-left: 10px;
+			}
+		}
+	}
+}
+
+/* Customize Scrollbar */
+::-webkit-scrollbar {
+	width: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background: #FFF;
+	-webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #CCC;
+	-webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+

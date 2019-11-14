@@ -1,0 +1,17 @@
+.search-form {
+	float: right;
+	margin-right: 30px;
+}
+
+.search-form-input {
+	background-color: white;
+	padding: 5px;
+	background-color: white;
+	height: 30px;
+	text-align: left;
+}
+
+.search-form-button {
+	background-color: white;
+	color: blue;
+}

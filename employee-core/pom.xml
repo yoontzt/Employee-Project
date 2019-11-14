@@ -1,0 +1,470 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<groupId>com.axonactive</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>employee-core</artifactId>
+	<packaging>war</packaging>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jsf.version>2.2.15</jsf.version>
+		<junit.version>3.8.1</junit.version>
+		<primefaces.version>6.2</primefaces.version>
+		<log4j-version>1.2.17</log4j-version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<powermock.version>2.0.2</powermock.version>
+
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.jacoco.reportPath>${project.build.directory}/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.host.url> http://192.168.70.59:8889 </sonar.host.url>
+		<sonar.language>java</sonar.language>
+
+		<wildfly-ip>192.168.70.59</wildfly-ip>
+		<wildfly-username>root</wildfly-username>
+		<wildfly-password>root</wildfly-password>
+		<wildfly-port>9990</wildfly-port>
+
+		<jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+		<!-- Jacoco output file for UTs -->
+		<jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+		<!-- Tells Sonar where the Jacoco coverage result file is located for Unit 
+			Tests -->
+		<!--... -->
+		<!-- The Sonar Jacoco Listener for JUnit to extract coverage details per 
+			test -->
+		<!--... -->
+		<jacoco.version>0.8.4</jacoco.version>
+		<sonar-jacoco-listeners.version>1.4</sonar-jacoco-listeners.version>
+		<version.arquillian_persistence>1.0.0.Alpha5</version.arquillian_persistence>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.arquillian</groupId>
+				<artifactId>arquillian-bom</artifactId>
+				<version>1.4.0.Final</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.18.2-GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>2.2.1.GA</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-multipart-provider</artifactId>
+			<version>2.2.0.GA</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- optional, good for handle I/O task -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.6</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.7.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.swagger/swagger-jaxrs -->
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-jaxrs</artifactId>
+			<version>1.5.22</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-common</artifactId>
+			<version>2.22.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.protocol</groupId>
+			<artifactId>arquillian-protocol-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.descriptors</groupId>
+			<artifactId>shrinkwrap-descriptors-impl-javaee</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.core</groupId>
+			<artifactId>arquillian-core-api</artifactId>
+
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-integration-tests</artifactId>
+			<version>1.0.0.Alpha7</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.extension/arquillian-persistence-api -->
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-api</artifactId>
+			<version>${version.arquillian_persistence}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.arquillian.extension/arquillian-persistence-impl -->
+		<dependency>
+			<groupId>org.jboss.arquillian.extension</groupId>
+			<artifactId>arquillian-persistence-impl</artifactId>
+			<version>${version.arquillian_persistence}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-depchain</artifactId>
+
+			<scope>test</scope>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-aether-provider</artifactId>
+			<version>3.3.9</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-model</artifactId>
+			<version>3.3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-model-builder</artifactId>
+			<version>3.3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-repository-metadata</artifactId>
+			<version>3.3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.0.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.9</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.13.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.jms/jms -->
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.3.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+	</dependencies>
+	<!-- general build option -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<!-- attached to Maven test phase -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<forkCount>3</forkCount>
+					<reuseForks>true</reuseForks>
+					<useSystemClassLoader>false</useSystemClassLoader>
+					<testFailureIgnore>true</testFailureIgnore>
+					<argLine>${argLine} -Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<excludes>
+						<exclude>**/arquillian/**</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	<profiles>
+		<!-- mvn clean install wildfly:deploy -Plocalhost -->
+		<profile>
+			<id>localhost</id>
+			<properties>
+				<build.profile.id>localhost</build.profile.id>
+			</properties>
+			<build>
+				<finalName>employee-core</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<configuration>
+							<filename>${project.artifactId}.war</filename>
+							<skip>false</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.22.1</version>
+						<configuration>
+							<forkCount>3</forkCount>
+							<reuseForks>true</reuseForks>
+							<useSystemClassLoader>false</useSystemClassLoader>
+							<testFailureIgnore>true</testFailureIgnore>
+							<argLine>${argLine} -Xmx1024m -XX:MaxPermSize=256m</argLine>
+							<excludes>
+								<exclude>**/arquillian/**</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- Run with: mvn clean test -Parq-wildfly-managed -->
+			<id>arq-wildfly-managed</id>
+			<build>
+				<plugins>
+					<plugin>
+
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.22.1</version>
+						<configuration>
+
+							<useSystemClassLoader>false</useSystemClassLoader>
+							<testFailureIgnore>true</testFailureIgnore>
+							<argLine>${argLine} -Xmx1024m -XX:MaxPermSize=256m </argLine>
+							<excludes>
+								<exclude>**/converter/**</exclude>
+								<exclude>**/exception/**</exclude>
+								<exclude>**/restconfiguration/**</exclude>
+								<exclude>**/service/**</exclude>
+							</excludes>
+						</configuration>
+
+					</plugin>
+				</plugins>
+			</build>
+			<dependencies>
+				<dependency>
+					<groupId>org.wildfly.arquillian</groupId>
+					<artifactId>wildfly-arquillian-container-managed</artifactId>
+					<version>2.1.1.Final</version>
+					<scope>test</scope>
+				</dependency>
+				<!-- https://mvnrepository.com/artifact/org.wildfly.core/wildfly-server -->
+				<dependency>
+					<groupId>org.wildfly.core</groupId>
+					<artifactId>wildfly-server</artifactId>
+					<version>9.0.2.Final</version>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+					<version>1.6.4</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<!-- mvn clean install wildfly:deploy -Pemployee-core -->
+		<profile>
+			<id>employee-core</id>
+			<properties>
+				<build.profile.id>employee-core</build.profile.id>
+			</properties>
+			<build>
+				<finalName>employee-core</finalName>
+				<plugins>
+
+					<plugin>
+						<groupId>org.wildfly.plugins</groupId>
+						<artifactId>wildfly-maven-plugin</artifactId>
+						<configuration>
+							<filename>${project.artifactId}.war</filename>
+							<hostname>${wildfly-ip}</hostname>
+							<port>${wildfly-port}</port>
+							<username>${wildfly-username}</username>
+							<password>${wildfly-password}</password>
+							<skip>false</skip>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.22.1</version>
+						<configuration>
+							<forkCount>3</forkCount>
+							<reuseForks>true</reuseForks>
+							<useSystemClassLoader>false</useSystemClassLoader>
+							<testFailureIgnore>true</testFailureIgnore>
+							<argLine>${argLine} -Xmx1024m -XX:MaxPermSize=256m</argLine>
+							<excludes>
+								<exclude>**/arquillian/**</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

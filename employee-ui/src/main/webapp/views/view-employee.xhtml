@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<title>Employee Information</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="resources/images/logo/favicon.ico"></link>
+	<h:outputStylesheet library="library"
+		name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="updateform.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="aavn.css"></h:outputStylesheet>
+	<ui:insert name="head"></ui:insert>
+</h:head>
+
+<h:body styleClass="container-employee">
+	<!-- header -->
+	<ui:include src="/header.xhtml" />
+
+	<!-- end header -->
+	<div class="ui-g">
+
+		<h3 class="aavn-page-heading employee-heading">Employee
+			Information</h3>
+
+		<div class="ui-g-3"></div>
+		<div class="ui-g-6">
+
+			<div class="ui-g basic">
+
+				<!-- header of Personal Detail form -->
+				<h:form id="updateEmployeeForm"
+					styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g-9">
+						<h4 class="aavn-heading-lv2 no-margin">Personal Detail</h4>
+					</div>
+					<div class="ui-g-3">
+						<c:if test="#{updateEmployeeController.showValue==true}">
+
+							<p:commandButton
+								action="#{updateEmployeeController.changeShowValue}"
+								icon="fa fa-edit" value="Edit" update=":updateEmployeeForm"
+								immediate="true" styleClass="edit-button" />
+
+						</c:if>
+						<c:if test="#{updateEmployeeController.showValue==false}">
+							<p:commandButton action="#{updateEmployeeController.update}"
+								id="save-change" icon="fa fa-save" value="Save" tabindex="10"
+								update="updateEmployeeForm"
+								styleClass="aavn-active-button edit-button" process="@form" />
+							<p:commandButton action="#{updateEmployeeController.cancel}"
+								icon="fa fa-times" value="Cancel" tabindex="11"
+								update="updateEmployeeForm" immediate="true"
+								styleClass="aavn-inactive-button edit-button" process="@form" />
+
+						</c:if>
+					</div>
+					<div class="ui-g-12">
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">First Name : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding input-field aavn-input-field remove-margin">
+							<p:inputText id="firstname"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.firstname}"
+								required="true" requiredMessage="Please enter first name"
+								tabindex="1" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+								<f:converter converterId="trimmingConverter" />
+								<p:focus for="firstname"></p:focus>
+							</p:inputText>
+							<p:message for="firstname" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">Last Name : </label>
+
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding input-field aavn-input-field remove-margin">
+							<p:inputText id="lastname"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.lastname}"
+								required="true" requiredMessage="Please enter last name"
+								tabindex="2" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+								<f:converter converterId="trimmingConverter" />
+							</p:inputText>
+							<p:message for="lastname" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">Date Of Birth : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding input-field aavn-input-field remove-margin">
+							<p:calendar id="calendar" navigator="true" pattern="dd-MMM-yyyy"
+								styleClass="aavn-calendar calendar" required="true"
+								requiredMessage="Please choose date of birth"
+								value="#{updateEmployeeController.employee.dateOfBirth}"
+								yearRange="1950:2019" maxdate="today" tabindex="3"
+								disabled="#{updateEmployeeController.showValue}" showOn="button">
+								<p:ajax update="@next @this" event="change" />
+								<p:ajax update="@next @this" event="dateSelect" />
+							</p:calendar>
+							<p:message for="@previous" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">Address : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="address"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.address.address}"
+								required="true" requiredMessage="Please enter the address"
+								tabindex="5" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="@previous" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">City : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="city"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.address.city}" required="true"
+								requiredMessage="Please enter the city" tabindex="6"
+								disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="@previous" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname"> Country : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:selectOneMenu id="country" title="Country "
+								value="#{updateEmployeeController.address.country}"
+								valueChangeListener="#{updateEmployeeController.changeCountry}"
+								required="true" requiredMessage="Please select the country"
+								styleClass="select-menu-fix-width select-menu-border country"
+								tabindex="7" disabled="#{updateEmployeeController.showValue}">
+								<f:selectItems
+									value="#{updateEmployeeController.availableCountry}"
+									var="countryVar" itemLabel="#{countryVar.key}"
+									itemValue="#{countryVar.key}" />
+								<p:ajax update="@this" event="change" />
+							</p:selectOneMenu>
+							<p:message for="@previous" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">Department : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:selectOneMenu id="department"
+								value="#{updateEmployeeController.department.departmentId}"
+								valueChangeListener="#{updateEmployeeController.changeDepartment}"
+								styleClass="select-menu-fix-width select-menu-border"
+								tabindex="9" disabled="#{updateEmployeeController.showValue}">
+								<f:selectItems
+									value="#{updateEmployeeController.departmentList}" var="dept"
+									itemValue="#{dept.departmentId}" itemLabel="#{dept.name}" />
+								<p:ajax update="@this" event="change" />
+							</p:selectOneMenu>
+							<p:message for="@previous" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height">
+
+							<label for="firstname">Emergency Contact (Optional) : </label>
+
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="emergencycontact"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.emergencyContact}"
+								tabindex="8" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="@previous" styleClass="red-color" display="text" />
+						</div>
+
+						<div class="ui-g-4 reduce-height ">
+
+							<label for="firstname">Nationality (Optional) : </label>
+
+						</div>
+						<div
+							class="ui-g-6 mb-4 reduce-height removepadding input-field aavn-input-field remove-margin">
+							<p:inputText id="nationality"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.nationality}"
+								tabindex="4" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="@previous" styleClass="red-color" display="text" />
+						</div>
+
+					</div>
+				</h:form>
+			</div>
+
+
+			<div class="ui-g basic">
+				<!-- header of Contact Information form -->
+				<h:form id="contactForm" styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g-9">
+						<h4 class="aavn-heading-lv2 no-margin">Contact</h4>
+					</div>
+					<div class="ui-g-3 reduce-height"></div>
+				</h:form>
+
+				<!-- body of Contact Information form -->
+				<h:form id="contactDetailForm"
+					styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g">
+						<div class="ui-g-4 reduce-height">
+							<label for="email">Primary Email :</label>
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="email"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.primaryEmail}"
+								required="true" requiredMessage="Please enter email" tabindex=""
+								disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="email" display="text" />
+						</div>
+					</div>
+					<div class="ui-g">
+						<div class="ui-g-4 reduce-height">
+							<label for="phone">Phone :</label>
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="phone"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.mobilePhone}"
+								required="true" requiredMessage="Please enter phone number"
+								tabindex="" disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="email" display="text" />
+						</div>
+					</div>
+					<div class="ui-g">
+						<div class="ui-g-4 reduce-height">
+							<label for="skype">Skype :</label>
+						</div>
+						<div
+							class="ui-g-6 reduce-height removepadding remove-margin input-field aavn-input-field">
+							<p:inputText id="skype"
+								styleClass="aavn-input-text input-text-size"
+								value="#{updateEmployeeController.employee.skype}"
+								required="true" requiredMessage="Please enter skype" tabindex=""
+								disabled="#{updateEmployeeController.showValue}">
+								<p:ajax update="@next @this" event="change" />
+							</p:inputText>
+							<p:message for="email" display="text" />
+						</div>
+					</div>
+				</h:form>
+
+				<!-- Additional Contact Information form -->
+				<h:form id="AdditionalContactForm"
+					styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g">
+						<div class="ui-g-9">
+							<h4 class="aavn-heading-lv2 no-margin">Additional Contact</h4>
+						</div>
+						<div class="ui-g-3">
+							<p:commandButton icon="fa fa-plus" value="Add"
+								update="AdditionalContactForm" immediate="true"
+								action="#{updateEmployeeController.openAddContactDialog}"
+								styleClass="aavn-active-button edit-button" process="@form">
+								<f:param name="eid"
+									value="#{updateEmployeeController.employeeId}"></f:param>
+								<p:ajax event="click" update="contactDialog"
+									listener="#{contactController.clearContactDialog}" />
+							</p:commandButton>
+						</div>
+
+						<div class="ui-g-12">
+							<p:dataGrid var="contact"
+								value="#{updateEmployeeController.contactList}" columns="1"
+								rows="12" id="contacts" styleClass="noborder"
+								emptyMessage="No Contacts Found.">
+
+								<div class="ui-g-4 float label">#{contact.type} :</div>
+								<div class="ui-g-6 datagrid-data">#{contact.value}</div>
+								<p:commandButton icon="fa fa-minus" value=""
+									action="#{updateEmployeeController.deleteContact(contact.contactId)}"
+									update="AdditionalContactForm"
+									styleClass="aavn-delete-circle-button ui-g-1" immediate="true">
+									<p:confirm header="Confirmation"
+										message="Are you sure to delete?"
+										icon="fa fa-exclamation-triangle" />
+								</p:commandButton>
+							</p:dataGrid>
+						</div>
+
+					</div>
+				</h:form>
+
+				<p:dialog header="New Additional Contact" id="contactDialog"
+					widgetVar="addContactDialog" resizable="false" height="240px"
+					styleClass="aavn-modal-dialog" width="600px" modal="true">
+					<ui:include src="/views/add-contact-dialog.xhtml"></ui:include>
+					<p:ajax event="close" update="AdditionalContactForm"
+						listener="#{updateEmployeeController.reloadContactInformation}" />
+				</p:dialog>
+
+
+			</div>
+
+			<!-- Certificate -->
+			<div class="ui-g basic">
+				<!-- header of Certificate form -->
+				<h:form id="certificateForm"
+					styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g-9">
+						<h4 class="aavn-heading-lv2 no-margin">Education Certificate</h4>
+					</div>
+					<div class="ui-g-3">
+						<p:commandButton icon="fa fa-plus" value="Add"
+							update="certificateDetailForm" immediate="true"
+							action="#{updateEmployeeController.openAddCertificateDialog}"
+							styleClass="aavn-active-button edit-button" process="@form">
+							<f:param name="eid"
+								value="#{updateEmployeeController.employeeId}"></f:param>
+							<p:ajax event="click" update="certificateDialog"
+								listener="#{certificateController.clearCertificateDialog}" />
+						</p:commandButton>
+					</div>
+				</h:form>
+
+				<!-- body of certificate form -->
+				<h:form id="certificateDetailForm"
+					styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g">
+						<div class="ui-g-12">
+							<h:panelGrid columns="3" style="width: 100%;"
+								styleClass="certificateHeader" id="certificateTitle">
+								<div class="ui-g-6 padding5em title">Name</div>
+								<div class="ui-g-3 padding5em title">Type</div>
+								<div class="ui-g-2 padding5em title">Achieved Time</div>
+							</h:panelGrid>
+						</div>
+
+						<p:dataGrid var="certificate"
+							value="#{updateEmployeeController.certificateList}" columns="1"
+							rows="12" id="certificates" styleClass="noborder ui-g-12"
+							emptyMessage="No Certificates Found.">
+							<div class="ui-g-6 paddingTop">#{certificate.nameOfCertificate}</div>
+							<div class="ui-g-3 paddingTop">#{certificate.typeOfCertificate}</div>
+							<div class="ui-g-2 paddingTop">#{certificate.achievedTime}</div>
+							<p:commandButton icon="fa fa-minus" value=""
+								update="certificateDetailForm"
+								action="#{updateEmployeeController.deleteCertificate(certificate.certificateId)}"
+								styleClass="aavn-delete-circle-button" immediate="true">
+								<p:confirm header="Confirmation"
+									message="Are you sure to delete?"
+									icon="fa fa-exclamation-triangle" />
+							</p:commandButton>
+
+						</p:dataGrid>
+
+					</div>
+				</h:form>
+				<p:dialog header="New Education Certificate" id="certificateDialog"
+					widgetVar="addCertificateDialog" resizable="false" height="350px"
+					styleClass="aavn-modal-dialog" width="760px" modal="true">
+					<ui:include src="/views/add-certificate-dialog.xhtml"></ui:include>
+					<p:ajax event="close" update="certificateDetailForm"
+						listener="#{updateEmployeeController.reloadCertificateInformation}" />
+				</p:dialog>
+			</div>
+
+			<!-- article -->
+			<div class="ui-g basic">
+				<!-- header of Article -->
+				<h:form id="article" styleClass="aavn-form-component ui-g-12">
+					<div class="ui-g-9">
+						<h4 class="aavn-heading-lv2 no-margin">Article Information</h4>
+					</div>
+				</h:form>
+
+				<!-- body of article -->
+				<h:form id="addArticle" enctype="multipart/form-data"
+					styleClass="aavn-form-component ui-g-12 pad-left-0">
+					<p:fileUpload styleClass="aavn-file-upload ui-g-12 "
+						fileUploadListener="#{updateEmployeeController.saveFileToBackEnd}"
+						mode="advanced" dragDropSupport="false" update="addArticle"
+						sizeLimit="10000000" fileLimit="1"
+						allowTypes="/(\.|\/)(jpe?g|png|pdf|docx|xlsx)$/">
+					</p:fileUpload>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+		styleClass="aavn-confirm-dialog">
+		<div class="cancelAndSave">
+			<p:commandButton value="No" type="button"
+				styleClass="aavn-inactive-button ui-confirmdialog-no"
+				icon="fa fa-times" />
+			<p:commandButton value="Yes" type="button"
+				styleClass="aavn-active-button ui-confirmdialog-yes"
+				icon="fa fa-check" />
+		</div>
+	</p:confirmDialog>
+	<!--footer -->
+	<ui:include src="/footer.xhtml" />
+	<h:outputScript library="js" name="general.js"></h:outputScript>
+</h:body>
+
+</html>

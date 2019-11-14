@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:of="http://omnifaces.org/functions">
+
+	<title>Add New Additional Contact</title>
+	<h:outputStylesheet library="library"
+		name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="scss_compiled"
+		name="aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="aavn.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="updateform.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.min.css"></h:outputStylesheet>
+
+	<h:form id="addContactForm" styleClass="aavn-form-component">
+		<div class="ui-g">
+			<div class="ui-g-12">
+				<div class="ui-g-3">
+					<p:selectOneMenu id="contactType" placeholder="Contact type"
+						value="#{contactController.contact.type}" required="true"
+						styleClass="select-menu-full-width select-menu-border top"
+						tabindex="1">
+						<f:selectItems value="#{contactController.availableContactTypes}"
+							var="contactTypeVar" itemLabel="#{contactTypeVar.key}"
+							itemValue="#{contactTypeVar.value}" />
+						<p:ajax event="change" update="addContactForm"
+							listener="#{contactController.getTypeValue}" />
+					</p:selectOneMenu>
+					<p:message for="contactType" styleClass="ui-message-error"
+						display="text" />
+				</div>
+				<div class="ui-g-9">
+					<p:outputPanel styleClass="input-field aavn-input-field">
+						<p:inputText id="contactValue"
+							styleClass="aavn-input-text input-text-size" required="true"
+							requiredMessage="Please enter contact value"
+							value="#{contactController.contact.value}" tabindex="2">
+							<p:focus for="contactValue"></p:focus>
+							<f:validateBean disabled="true" />
+							<p:ajax update="addContactForm" event="change"
+								listener="#{contactController.onContactChanged}" />
+						</p:inputText>
+						<p:message for="contactValue" styleClass="ui-message-error"
+							display="text" />
+					</p:outputPanel>
+				</div>
+			</div>
+			<div class="ui-g-12">
+				<div class="ui-g-12">
+					<div class="ui-g-8"></div>
+					<div class="ui-g-4">
+						<p:commandButton action="#{contactController.addContact}"
+							icon="fa fa-save" value="Save" tabindex="3"
+							update="addContactForm"
+							styleClass="aavn-active-button edit-button">
+						</p:commandButton>
+						<p:commandButton
+							action="#{contactController.closeAddContactDialog}"
+							icon="fa fa-times" value="Cancel" tabindex="4"
+							update="addContactForm" immediate="true"
+							styleClass="aavn-inactive-button edit-button">
+							<p:ajax event="click" update="addContactForm"
+								listener="#{contactController.clearContactDialog}" />
+						</p:commandButton>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+	<h:outputScript library="js" name="aavn-script.min.js"></h:outputScript>
+
+</ui:composition>

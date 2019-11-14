@@ -1,0 +1,76 @@
+department: #table name
+   - departmentId: 1
+     name: Zürich
+   - departmentId: 2
+     name: Geneve
+   - departmentId: 3
+     name: Uri
+     
+address:
+   - addressId: 1
+     address: No.(123), Corner of Anawrahta & Pansodan Street,Pansodan Office Tower
+     city: Yangon
+     country: Myanmar
+   - addressId: 2
+     address: H54503 K322, Hải Phòng Str., Chính Gián Ward, Thanh Khê Dist.
+     city: Đà Nẵng City
+     country: Vietnam
+   - addressId: 3
+     address: 2nd floor, Kirchenfeldstrasse 68, P.O. Box 262, CH-3000 Berne 6
+     city: Bern
+     country: Switzerland
+     
+
+     
+employee: #table name
+   - employeeId: 1
+     lastName: Vladimir
+     firstName: Putin
+     dateOfBirth: "1970-02-05"
+     nationality: Rusian
+     primaryEmail: putin.v@red-square.ru
+     mobilePhone: +41228090002
+     skype: putin.v.red.square
+     department: 1
+     address: 2
+     
+   - employeeId: 2
+     lastName: George Jr
+     firstName: Bush
+     dateOfBirth: "1968-12-31"
+     nationality: USA
+     primaryEmail: george.b@white-house.us
+     mobilePhone: 0041 31 351 15 57 
+     skype: live:at.white.house
+     department: 2
+     address: 3
+     
+   - employeeId: 3
+     lastName: O'Leary
+     firstName: Mike
+     dateOfBirth: "1985-10-20"
+     nationality: Myanmar
+     primaryEmail: example-indeed@strange-example.com
+     mobilePhone: +1-541-754-3010 
+     skype: test.skype.mike
+     department: 2
+     address: 1
+     
+
+contact: #table name
+   - contactId: 1
+     type: Email
+     value: other.email-with-hyphen@example.com
+     employeeId: 1
+   - contactId: 2
+     type: Link
+     value: https://twitter.com/codyogden
+     employeeId: 1 
+     
+certificate:
+   - certificateId: 1
+     name: Certified Information Systems Security Professional (CISSP)
+     type: Security
+     achievedTime: Aug-2017
+     employeeid: 1
+     

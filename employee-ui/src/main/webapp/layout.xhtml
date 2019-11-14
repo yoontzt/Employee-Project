@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+	<title>Employee Information</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="../resources/images/logo/favicon.ico"></link>
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="10%" header="" resizable="false"
+			closable="false" collapsible="false">
+			<h4 class="aavn-heading-lv2">Update Employee</h4>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" size="80%">
+
+			<h:form id="updateEmployeeForm" styleClass="aavn-form-component">
+				<div class="ui-g-3"></div>
+				<div class="ui-g-6">
+					<div class="ui-g">
+						<div class="ui-g-12">
+							<h4 class="aavn-heading-lv2">Personal Detail</h4>
+							<p:commandButton icon="fa fa-edit" value="Edit"
+								update="updateEmployeeForm" immediate="true"></p:commandButton>
+						</div>
+						<div class="ui-g-12">
+							<p:panelGrid columns="2" columnClasses="column" layout="grid"
+								id="personalDetail">
+								<h:outputLabel for="firstname" value="First Name :"
+									styleClass="" />
+								<h:outputText id="firstname"
+									value="#{updateEmployeeController.employee.firstname}" />
+
+								<h:outputLabel for="lastname" value="Last Name :" />
+								<h:outputText id="lastname"
+									value="#{updateEmployeeController.employee.lastname}" />
+
+								<h:outputLabel for="dateOfBirth" value="Date Of Birth :" />
+								<h:outputText id="dateOfBirth"
+									value="#{updateEmployeeController.employee.dateOfBirth}">
+									<f:convertDateTime pattern="dd-MMM-yyyy" />
+								</h:outputText>
+
+								<h:outputLabel for="nationality" value="Nationality :" />
+								<h:outputText id="nationality"
+									value="#{updateEmployeeController.employee.nationality}" />
+
+								<h:outputLabel for="address" value="Address :" />
+								<h:outputText id="address"
+									value="#{updateEmployeeController.employee.address.address}" />
+
+								<h:outputLabel for="city" value="City :" />
+								<h:outputText id="city"
+									value="#{updateEmployeeController.employee.address.city}" />
+
+								<h:outputLabel for="country" value="Country :" />
+								<h:outputText id="country"
+									value="#{updateEmployeeController.employee.address.country}" />
+
+								<h:outputLabel for="emergency" value="Emergency Contact :" />
+								<h:outputText id="emergency"
+									value="#{updateEmployeeController.employee.emergencyContact}" />
+
+								<h:outputLabel for="department" value="Department :" />
+								<h:outputText id="department"
+									value="#{updateEmployeeController.employee.department.name}" />
+							</p:panelGrid>
+						</div>
+					</div>
+					<div class="ui-g">
+						<div class="ui-g-12">
+							<h4 class="aavn-heading-lv2">Contact Information</h4>
+							<p:commandButton icon="fa fa-edit" value="Edit"
+								update="updateEmployeeForm" immediate="true"></p:commandButton>
+						</div>
+
+						<div class="ui-g-12">
+
+							<p:panelGrid columns="2" columnClasses="column" cellpadding="5"
+								layout="grid" id="additionalContact">
+
+								<h:outputLabel for="email" value="email :" styleClass="" />
+								<h:outputText id="email"
+									value="#{updateEmployeeController.employee.primaryEmail}" />
+
+								<h:outputLabel for="phone" value="phone :" />
+								<h:outputText id="phone"
+									value="#{updateEmployeeController.employee.mobilePhone}" />
+
+								<h:outputLabel for="skype" value="skype :" />
+								<h:outputText id="skype"
+									value="#{updateEmployeeController.employee.skype}" />
+							</p:panelGrid>
+							
+							<p:dataTable id="contactData"
+								value="#{updateEmployeeController.contactList}" var="contact">
+
+								<p:column styleClass="">
+									<h:outputText value="#{contact.type}"></h:outputText>
+								</p:column>
+
+								<p:column styleClass="">
+									#{contact.value}
+									</p:column>
+							</p:dataTable>
+
+						</div>
+
+						<!-- break -->
+
+					</div>
+					<div class="ui-g">
+						<div class="ui-g-12">
+							<h4 class="aavn-heading-lv2">Certificate Information</h4>
+							<p:commandButton icon="fa fa-edit" value="Edit"
+								update="updateEmployeeForm" immediate="true"></p:commandButton>
+						</div>
+						<div class="ui-g-12">
+							<p:dataTable id="certificateData"
+								value="#{updateEmployeeController.certificateList}"
+								var="certificate">
+								<p:column styleClass="">
+									<f:facet name="header">Name</f:facet>
+									#{certificate.nameOfCertificate}
+									</p:column>
+
+								<p:column styleClass="">
+									<f:facet name="header">Type</f:facet>
+									#{certificate.typeOfCertificate}
+									</p:column>
+
+								<p:column styleClass="">
+									<f:facet name="header">Time</f:facet>
+									#{certificate.achievedTime}
+									</p:column>
+
+							</p:dataTable>
+						</div>
+					</div>
+				</div>
+				<div class="ui-g-3"></div>
+
+			</h:form>
+		</p:layoutUnit>
+
+	</p:layout>
+
+	<h:outputScript library="js" name="general.js"></h:outputScript>
+</h:body>
+</html>

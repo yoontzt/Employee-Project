@@ -1,0 +1,11 @@
+contact: #table name
+   - type: Email
+     value: other.email-with-hyphen@example.com
+     employeeId: 1
+   - type: Link
+     value: https://twitter.com/codyogden
+     employeeId: 1 
+     
+   - type: Phone
+     value: +49-89-636-4801
+     employeeId: 2

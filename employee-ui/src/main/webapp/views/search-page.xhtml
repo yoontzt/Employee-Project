@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Employee's Management</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="shortcut icon" href="resources/images/logo/favicon.ico"></link>
+	<h:outputStylesheet library="library"
+		name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="search.css"></h:outputStylesheet>
+	<ui:insert name="head"></ui:insert>
+</h:head>
+
+<h:body>
+	<div class="header"></div>
+	<div class="employee-container">
+
+		<h:form id="listOfSearchEmp" styleClass="aavn-form-component">
+			<div class="employee-row">
+				<h:panelGrid styleClass="dataPanelGrid" columns="1" cellpadding="1">
+					<h:outputText value="Search Employee"
+						styleClass="dataTabletitle aavn-page-heading" />
+
+					<p:outputPanel>
+						<p:inputText id="globalFilter"
+							value="#{employeeController.input}"
+							onkeyup="PF('employeeData').filter()" style="width:300px"
+							placeholder="Enter keyword"
+							styleClass="dataTabletitle aavn-page-heading" />
+						<p:commandButton value="Search" icon="fa fa-check"
+							update="listOfSearchEmp:empData"
+							process="@form"
+							action="#{employeeController.searchingEmployee}"
+							styleClass="aavn-active-button">
+						</p:commandButton>
+					</p:outputPanel>
+				</h:panelGrid>
+			</div>
+
+			<p:dataTable id="empData" var="emp" reflow="true" rows="10"
+				paginatorPosition="bottom" paginator="true"
+				value="#{employeeController.employeeList}"
+				styleClass="aavn-data-table table-font-size" resizableColumns="true"
+				headerClass="employeeTableHeader"
+				rowClasses="employeeTableOddRow,employeeTableEvenRow"
+				rowIndexVar="rowIndex"
+				currentPageReportTemplate="Showing {startRecord} to {endRecord} of {totalRecords} entries"
+				emptyMessage="No records found" rowsPerPageTemplate="10,20,50,100"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} 
+{LastPageLink} {RowsPerPageDropdown}">
+
+				
+
+
+				<p:column styleClass="headerColoumn col-half">
+					<f:facet name="header">No.</f:facet>
+					<h:outputText value="#{rowIndex+1}." />
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Name</f:facet>
+					#{emp.firstname} #{emp.lastname}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Date of Birth</f:facet>
+					<h:outputText value="#{emp.dateOfBirth}">
+						<f:convertDateTime pattern="dd-MMM-yyyy" />
+					</h:outputText>
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Nationality</f:facet>
+					#{emp.nationality}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-3">
+					<f:facet name="header">Email</f:facet>
+					#{emp.primaryEmail}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Mobile Phone</f:facet>
+					#{emp.mobilePhone}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Skype</f:facet>
+					#{emp.skype}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-3">
+					<f:facet name="header">Emergency Contact</f:facet>
+					#{emp.emergencyContact}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-7">
+					<f:facet name="header">Address</f:facet>
+					#{emp.address.address}, #{emp.address.city}, #{emp.address.country}
+				</p:column>
+
+				<p:column styleClass="headerColoumn col-2">
+					<f:facet name="header">Department</f:facet>
+					#{emp.department.name}
+				</p:column>
+
+
+			</p:dataTable>
+
+		</h:form>
+
+	</div>
+
+	<!--footer -->
+	<ui:include src="/footer.xhtml" />
+
+
+	<h:outputScript library="js" name="jquery.toast.min.js"></h:outputScript>
+	<h:outputScript library="js" name="Message.js"></h:outputScript>
+	<h:outputScript library="js" name="general.js"></h:outputScript>
+	<h:outputScript library="js" name="aavn-script.min.js"></h:outputScript>
+</h:body>
+</html>

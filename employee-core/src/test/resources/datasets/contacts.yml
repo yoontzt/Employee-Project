@@ -1,0 +1,42 @@
+department: #table name
+   - departmentId: 1
+     name: Zürich
+   - departmentId: 2
+     name: Geneve
+   - departmentId: 3
+     name: Uri
+     
+
+     
+employee: #table name
+   - employeeId: 1
+     lastName: Vladimir
+     firstName: Putin
+     dateOfBirth: "1970-02-05"
+     nationality: Rusian
+     primaryEmail: putin.v@red-square.ru
+     mobilePhone: +41228090002
+     skype: putin.v.red.square
+     department: 1
+     
+   - employeeId: 2
+     lastName: George Jr
+     firstName: Bush
+     dateOfBirth: "1968-12-31"
+     nationality: USA
+     primaryEmail: george.b@white-house.us
+     mobilePhone: 0041 31 351 15 57 
+     skype: live:at.white.house
+     department: 2
+     
+
+contact: #table name
+   - type: Email
+     value: other.email-with-hyphen@example.com
+     employeeId: 1
+   - type: Link
+     value: https://twitter.com/codyogden
+     employeeId: 1 
+     
+
+     

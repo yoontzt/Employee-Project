@@ -1,0 +1,48 @@
+.header {
+	overflow: hidden;
+	background-color: #F0F8FF;
+	border: 1px solid #d9d9d9;
+	position: sticky;
+	width: 100%;
+	top: 0;
+	z-index: 1;
+}
+
+td {
+	padding: 0px !important;
+}
+
+.displayLogIn {
+	float: right;
+	font-size: 15px;
+}
+
+table {
+	border-collapse: unset;
+}
+
+.newEmpBtn {
+	border: white;
+	float: right;
+	background-color: #ffffff !important;
+	font-size: 15px;
+	color: #4dc3f9 !important;
+}
+
+.output {
+	float: right;
+	font-size: 15px;
+	color: #4dc3f9 !important;
+	margin: 0 5px 0 0;
+}
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky+.content {
+	padding-top: 102px;
+}

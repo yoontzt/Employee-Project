@@ -1,0 +1,5 @@
+department: #table name
+ 
+  - name: Zürich
+  - name: Geneve
+  - name: Marketing & Design

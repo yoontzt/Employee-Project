@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+	<Appenders>
+
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%X{userId}] [%c:%L] - %msg%n" />
+		</Console>
+
+		<RollingFile name="employeelog"
+			fileName="${sys:jboss.server.log.dir}/employee/employee-core.log"
+			filePattern="${sys:jboss.server.log.dir}/employee/logging-employee-core-%d{MM-dd-yyyy}-%i.log"
+			immediateFlush="true">
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%X{userId}] [%c:%L] - %msg%n" />
+			<ThresholdFilter level="ERROR" onMatch="DENY"
+				onMismatch="ACCEPT" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+
+
+		<RollingFile name="employeeErrorlog"
+			fileName="${sys:jboss.server.log.dir}/employee/employee-core-error.log"
+			filePattern="${sys:jboss.server.log.dir}/employee/logging-employee-core-error-%d{MM-dd-yyyy}-%i.log">
+
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5p] [%X{userId}] [%c:%L] - %msg%n" />
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+				onMismatch="DENY" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+
+
+	</Appenders>
+	
+	
+	<Loggers>
+		<Logger name="com.axonactive">
+			<AppenderRef ref="employeeErrorlog" />
+			<AppenderRef ref="employeelog" />
+		</Logger>
+
+		<Root level="all">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>

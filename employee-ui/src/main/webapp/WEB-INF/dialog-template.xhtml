@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="library" name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library" name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library" name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library" name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<ui:insert name="head"></ui:insert>
+</h:head>    
+<h:body>	
+	<ui:insert name="body"></ui:insert>
+
+	<h:outputScript library="library" name="js/aavn-script.min.js"></h:outputScript>
+	<ui:insert name="script"></ui:insert>
+</h:body>    
+</html>

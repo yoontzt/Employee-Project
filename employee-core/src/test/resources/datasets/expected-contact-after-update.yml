@@ -1,0 +1,7 @@
+contact: #table name
+   - type: Email
+     value: fully-qualified-domain@example.com
+     employeeId: 1
+   - type: Link
+     value: https://twitter.com/codyogden
+     employeeId: 1 

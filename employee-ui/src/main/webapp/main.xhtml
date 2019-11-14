@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>AAVN UI Component</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="scss_compiled"
+		name="aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="scss_compiled"
+		name="aavn-form-components.min.css"></h:outputStylesheet>
+</h:head>
+
+<h:body>
+	<h2 class="aavn-page-heading">AAVN UI Component</h2>
+
+	<h:form styleClass="aavn-form-component">
+		<div class="ui-g">
+			<div class="ui-g-3"></div>
+			<div class="ui-g-5">
+				<h4 class="aavn-heading-lv1">Form Components</h4>
+				<h5 class="aavn-heading-lv2">Input Text</h5>
+				<p:outputPanel styleClass="input-field aavn-input-field">
+					<p:inputText id="inputText" styleClass="aavn-input-text" value=""></p:inputText>
+					<label class="aavn-input-text-label active" for="inputText">Input
+						Text</label>
+					<h:outputText styleClass="aavn-error-msg-input-field"
+						value="This is error message"></h:outputText>
+				</p:outputPanel>
+
+				<h5 class="aavn-heading-lv2">Input Number</h5>
+				<p:outputPanel class="input-field aavn-input-field">
+					<p:inputNumber id="inputNumber" styleClass="aavn-input-number"
+						value=""></p:inputNumber>
+					<label class="aavn-input-number-label active" for="inputNumber">Input
+						Number</label>
+					<h:outputText styleClass="aavn-error-msg-input-field"
+						value="This is error message"></h:outputText>
+				</p:outputPanel>
+
+				<h5 class="aavn-heading-lv2">InputTextArea</h5>
+				<p:outputPanel styleClass="input-field aavn-input-field">
+					<p:inputTextarea styleClass="aavn-text-area"
+						counter="textArea-remaining-message"
+						counterTemplate="{0} characters remaining" maxlength="50"
+						placeholder="Input Text Area"></p:inputTextarea>
+					<h:outputText id="textArea-remaining-message"
+						styleClass="aavn-remaining-msg-input-text-area"></h:outputText>
+					<h:outputText styleClass="aavn-error-msg-input-text-area"
+						value="This is error message"></h:outputText>
+				</p:outputPanel>
+
+				<h5 class="aavn-heading-lv2">Select box</h5>
+				<p:selectOneMenu styleClass="aavn-select-box">
+					<f:selectItem itemLabel="Item 1" itemValue="1" />
+					<f:selectItem itemLabel="Item 2" itemValue="2" />
+					<f:selectItem itemLabel="Item 3" itemValue="3" />
+					<f:selectItem itemLabel="Item 4" itemValue="4" />
+					<f:selectItem itemLabel="Item 5" itemValue="5" />
+				</p:selectOneMenu>
+
+				<h5 class="aavn-heading-lv2">
+					Select box and Input text (Extendable)
+					<p:commandButton
+						action="#{formComponentBean.addNewContactSelectAndInputExtends}"
+						icon="fa fa-plus" update="@form"
+						styleClass="aavn-active-button aavn-add-circle-button"
+						immediate="true" tabindex="7">
+					</p:commandButton>
+				</h5>
+				<div class="ui-g aavn-select-and-input-extendable">
+					<ui:repeat
+						value="#{formComponentBean.addedContactSelectAndInputExtends}"
+						var="contactVar" varStatus="contactVarStatus">
+						<div class="ui-g-3">
+							<div class="aavn-label active">Label of select box</div>
+							<p:selectOneMenu styleClass="aavn-select-box"
+								value="#{formComponentBean.addedContactSelectAndInputExtends[contactVarStatus.index].key}"
+								tabindex="#{7 + (contactVarStatus.index*2 + 1)}">
+								<f:selectItems
+									value="#{formComponentBean.contactsSelectAndInputExtends}"
+									var="contactTypeVar" itemLabel="#{contactTypeVar.name}"
+									itemValue="#{contactTypeVar.value}" />
+							</p:selectOneMenu>
+						</div>
+						<div class="ui-g-8">
+							<p:outputPanel styleClass="input-field aavn-input-field">
+								<p:inputText id="inputText-1" styleClass="aavn-input-text"
+									tabindex="#{7 + (contactVarStatus.index*2 + 2)}"
+									value="#{formComponentBean.addedContactSelectAndInputExtends[contactVarStatus.index].value}">
+								</p:inputText>
+								<label class="aavn-input-text-label active" for="inputText-1">Input
+									Text </label>
+								<h:outputText styleClass="aavn-error-msg-input-field"
+									value="This is error message"></h:outputText>
+							</p:outputPanel>
+						</div>
+						<div class="ui-g-1">
+							<p:commandButton
+								rendered="#{formComponentBean.greaterThanOneContactSelectAndInputExtends}"
+								action="#{formComponentBean.removeContactSelectAndInputExtends(contactVarStatus.index)}"
+								update="@form" icon="fa fa-minus"
+								styleClass="aavn-delete-circle-button" immediate="true">
+							</p:commandButton>
+						</div>
+					</ui:repeat>
+				</div>
+
+				<h5 class="aavn-heading-lv2">
+					Select box (Extendable)
+					<p:commandButton
+						action="#{formComponentBean.addNewContactSelectBoxExtends}"
+						icon="fa fa-plus" update="@form"
+						styleClass="aavn-active-button aavn-add-circle-button"
+						immediate="true" tabindex="8">
+					</p:commandButton>
+				</h5>
+				<div class="ui-g aavn-select-and-input-extendable">
+					<ui:repeat
+						value="#{formComponentBean.addedContactSelectBoxExtends}"
+						var="contactVar" varStatus="contactVarStatus">
+						<div class="ui-g-3">
+							<div class="aavn-label active">Label of select box</div>
+							<p:selectOneMenu styleClass="aavn-select-box"
+								value="#{formComponentBean.addedContactSelectBoxExtends[contactVarStatus.index].key}"
+								tabindex="#{8 + (contactVarStatus.index*2 + 1)}">
+								<f:selectItems
+									value="#{formComponentBean.contactSelectBoxExtends}"
+									var="contactTypeVar" itemLabel="#{contactTypeVar.name}"
+									itemValue="#{contactTypeVar.value}" />
+							</p:selectOneMenu>
+						</div>
+						<div class="ui-g-1">
+							<p:commandButton
+								rendered="#{formComponentBean.greaterThanOneContactSelectBoxExtends}"
+								action="#{formComponentBean.removeContactSelectBoxExtends(contactVarStatus.index)}"
+								update="@form" icon="fa fa-minus"
+								styleClass="aavn-delete-circle-button" immediate="true">
+							</p:commandButton>
+						</div>
+						<div class="ui-g-8"></div>
+					</ui:repeat>
+				</div>
+
+				<h5 class="aavn-heading-lv2">AutoComplete</h5>
+				<p:autoComplete styleClass="aavn-auto-complete" dropdown="true"
+					value="#{formComponentBean.selectedAutoComplete}"
+					completeMethod="#{formComponentBean.completeItem}">
+				</p:autoComplete>
+
+				<h5 class="aavn-heading-lv2">Radio box</h5>
+				<p:selectOneRadio styleClass="aavn-radio-box">
+					<f:selectItem itemLabel="Item 1" itemValue="1" />
+					<f:selectItem itemLabel="Item 2" itemValue="2" />
+					<f:selectItem itemLabel="Item 3" itemValue="3" />
+				</p:selectOneRadio>
+
+				<h5 class="aavn-heading-lv2">Check box</h5>
+				<p:selectManyCheckbox styleClass="aavn-checkbox">
+					<f:selectItem itemLabel="Item 1" itemValue="1" />
+					<f:selectItem itemLabel="Item 2" itemValue="2" />
+					<f:selectItem itemLabel="Item 3" itemValue="3" />
+				</p:selectManyCheckbox>
+
+				<h5 class="aavn-heading-lv2">Calendar</h5>
+				<p:calendar styleClass="aavn-calendar" pattern="dd-MM-yyyy"
+					placeholder="dd-MM-yyyy"></p:calendar>
+
+				<h5 class="aavn-heading-lv2">File Upload</h5>
+				<p:fileUpload
+					fileUploadListener="#{formComponentBean.handleFileUpload}"
+					mode="advanced" styleClass="aavn-file-upload" auto="true"
+					fileLimit="1" sizeLimit="100000"
+					allowTypes="/(\.|\/)(gif|jpe?g|png)$/"></p:fileUpload>
+
+				<h5 class="aavn-heading-lv2">Button</h5>
+				<p:commandButton styleClass="aavn-active-button" icon="fa fa-check"
+					value="Active Button"></p:commandButton>
+				<p:commandButton styleClass="aavn-inactive-button"
+					icon="fa fa-times" value="InActive Button"></p:commandButton>
+			</div>
+			<div class="ui-g-4"></div>
+		</div>
+
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<div class="ui-g-10">
+				<h5 class="aavn-heading-lv2">DataTable</h5>
+				<p:dataTable styleClass="aavn-data-table"
+					value="#{formComponentBean.dataTableObjs}" var="dataTableRow"
+					rows="10" rowIndexVar="rowIndex" paginator="true"
+					paginatorPosition="top"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="10,20,50,100"
+					currentPageReportTemplate="Showing {startRecord} to {endRecord} of {totalRecords} entries"
+					emptyMessage="No records found">
+
+					<p:column headerText="Id">
+						<h:outputText value="#{rowIndex}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Name" sortBy="#{dataTableRow.name}">
+						<h:outputText value="#{dataTableRow.name}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Color" sortBy="#{dataTableRow.color}">
+						<h:outputText value="#{dataTableRow.color}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Year" sortBy="#{dataTableRow.year}">
+						<h:outputText value="#{dataTableRow.year}"></h:outputText>
+					</p:column>
+
+					<p:column headerText="Note" sortBy="#{dataTableRow.note}">
+						<h:outputText value="#{dataTableRow.note}"></h:outputText>
+					</p:column>
+				</p:dataTable>
+			</div>
+			<div class="ui-g-1"></div>
+		</div>
+	</h:form>
+
+	<h:form styleClass="aavn-form-component">
+		<div class="ui-g">
+			<div class="ui-g-3"></div>
+			<div class="ui-g-5">
+				<h5 class="aavn-heading-lv2">Modal Dialog</h5>
+				<p:commandButton styleClass="aavn-active-button" icon="fa fa-home"
+					value="Modal dialog" onclick="PF('modal-dialog').show()"></p:commandButton>
+				<p:dialog styleClass="aavn-modal-dialog" header="Modal Dialog"
+					widgetVar="modal-dialog" modal="true" height="150"
+					closeOnEscape="true">
+					<h:outputText value="This is a Modal Dialog."></h:outputText>
+				</p:dialog>
+
+				<h5 class="aavn-heading-lv2">Confirm Dialog</h5>
+				<p:commandButton styleClass="aavn-active-button" icon="fa fa-home"
+					value="Confirm Dialog">
+					<p:confirm header="Confirm Dialog" message="Are you happy?"
+						icon="fa fa-heart"></p:confirm>
+				</p:commandButton>
+				<p:confirmDialog styleClass="aavn-confirm-dialog" global="true"
+					closeOnEscape="true">
+					<p:commandButton value="Yes" type="button"
+						styleClass="aavn-active-button" icon="fa fa-check" />
+					<p:commandButton value="No" type="button"
+						styleClass="aavn-inactive-button" icon="fa fa-times" />
+				</p:confirmDialog>
+
+				<h5 class="aavn-heading-lv2">Dialog Framework</h5>
+				<p:commandButton styleClass="aavn-active-button" icon="fa fa-home"
+					value="Dialog Framework"
+					action="#{formComponentBean.showDialogFramework}"></p:commandButton>
+
+				<h5 class="aavn-heading-lv2">Spinner</h5>
+				<!-- Use hideBackDrop('aavn-spinner') to end the spinner -->
+				<p:commandButton styleClass="aavn-active-button"
+					icon="fa fa-spinner fa-pulse" value="Show spinner"
+					onstart="showBackDrop('aavn-spinner')"></p:commandButton>
+
+				<h5 class="aavn-heading-lv2">Progress bar</h5>
+				<!-- Use hideBackDrop('aavn-progress-bar-container') to end the progress -->
+				<p:commandButton styleClass="aavn-active-button" icon="fa fa-bars"
+					value="Progress Bar"
+					action="#{formComponentBean.toggleProgressBar()}"
+					update="aavn-progressBar"
+					onstart="showBackDrop('aavn-progress-bar-container')"></p:commandButton>
+			</div>
+			<div class="ui-g-4"></div>
+		</div>
+	</h:form>
+
+	<div class="aavn-spinner">
+		<div class="content">
+			<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+			<div class="message">Put the message here...</div>
+		</div>
+	</div>
+
+	<p:outputPanel id="aavn-progressBar">
+		<p:progressBar styleClass="aavn-progress-bar" mode="indeterminate"
+			rendered="#{formComponentBean.active}"></p:progressBar>
+	</p:outputPanel>
+	<div class="aavn-progress-bar-container"></div>
+
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<h:outputScript library="js" name="aavn-script.min.js"></h:outputScript>
+</h:body>
+</html>

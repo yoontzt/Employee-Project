@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Sign in</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<link rel="shortcut icon" href="resources/images/logo/favicon.ico"></link>
+	<h:outputStylesheet library="library"
+		name="css/aavn-form-components.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="css/aavn-nova-light-theme.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="library"
+		name="font-awesome/css/font-awesome.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+	<ui:insert name="head"></ui:insert>
+</h:head>
+
+<h:body>
+
+	<div class="container-login">
+		<div class="wrap-login">
+			<h:form id="loginForm" styleClass="aavn-form-component">
+				<div class="ui-g">
+					<div class="ui-g-12">
+						<h3 class="aavn-page-heading employee-heading">Account Login</h3>
+					</div>
+
+					<div class="ui-g-12 wrap-input">
+						<p:messages id="messages" showDetail="true" closable="false">
+							<p:autoUpdate />
+						</p:messages>
+					</div>
+
+					<div class="ui-g-12 wrap-input max-height">
+						<p:outputPanel styleClass="input-field aavn-input-field">
+							<p:inputText id="username"
+								styleClass="aavn-input-text input-text-size"
+								value="#{loginController.username}">
+							</p:inputText>
+							<p:focus for="username"></p:focus>
+							<label class="aavn-input-text-label active" for="@previous">
+								User name </label>
+						</p:outputPanel>
+					</div>
+					<div class="ui-g-12 wrap-input max-height">
+						<p:outputPanel styleClass="input-field aavn-input-field">
+							<p:password id="password"
+								styleClass="aavn-input-text input-text-size"
+								value="#{loginController.pwd}">
+							</p:password>
+							<label class="aavn-input-text-label active" for="@previous">
+								Password </label>
+						</p:outputPanel>
+					</div>
+
+					<div class="ui-g-12">
+						<p:commandButton id="login" value="Log In"
+							action="#{loginController.logIn}"
+							styleClass="aavn-active-button login-full-btn"></p:commandButton>
+					</div>
+
+
+				</div>
+			</h:form>
+		</div>
+	</div>
+	<!--footer -->
+	<ui:include src="/footer.xhtml" />
+	<h:outputScript library="js" name="general.js"></h:outputScript>
+	<h:outputScript library="js" name="aavn-script.min.js"></h:outputScript>
+</h:body>
+</html>

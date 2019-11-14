@@ -1,0 +1,496 @@
+html {
+	background-color: white;
+	font-family: Arial, sans-serif;
+}
+
+h2 {
+	color: rgb(26, 183, 234);
+	font-size: 2em;
+	margin-top: 40px;
+	margin-left: 40px;
+	text-transform: capitalize;
+	text-shadow: gray;
+}
+
+/*container for whole page*/
+.container {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+.mainPageGrid tr, .mainPageGrid.ui-panelgrid .ui-panelgrid-cell {
+	border: none;
+	box-shadow: none;
+}
+/*header*/
+.header {
+	overflow: hidden;
+	background-color: #F0F8FF;
+	padding: 20px 0 20px 0;
+	border: 1px solid #d9d9d9;
+	position: sticky;
+	width: 100%;
+	top: 0;
+	z-index: 1;
+}
+
+/*dataTable */
+.ui-datatable.employeeTable .ui-datatable-data tr, .ui-datatable.employeeTable .ui-datatable-data-empty tr,
+	.ui-datatable.employeeTable .ui-datatable-data td, .ui-datatable.employeeTable .ui-datatable-data-empty td
+	{
+	border: none;
+}
+
+.table-font-size {
+	font-size: 1.2em !important;
+}
+
+/* this is for paginator under dataTable */
+.ui-widget-header {
+	background: none;
+	border: none;
+	background-color: #f2f5f9;
+}
+
+/* to remove border of dataTable  */
+.ui-widget-content {
+	border: none;
+}
+
+/* this is for the row dataTable title */
+.employee-row .dataPanelGrid {
+	width: 100%;
+	background-color: #4dc3f9;
+	color: white;
+	font-size: 2em;
+	background-position: center;
+	/* 	align: center; */
+	text-shadow: gray;
+	height: 60px;
+	margin-bottom: 0px;
+}
+
+.dataTabletitle {
+	font-weight: bold;
+	color: white;
+	margin-left: 20px;
+}
+
+.employeeTable th {
+	height: 40px;
+	vertical-align: middle;
+	text-shadow: none;
+	font-weight: 480;
+	font-size: 22px;
+	color: rgb(26, 183, 234);
+	background: none;
+	border-spacing: 0px;
+	border-color: white;
+	text-align: center;
+}
+
+.ui-datatable-even {
+	background: none repeat scroll 0 0 #f2f5f9;
+}
+
+.ui-datatable-odd {
+	background: none;
+}
+
+/* this is for the icons delete and edit in dataTable */
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-icon-only
+	{
+	background: none;
+	background-position: center;
+	background-color: inherit;
+	border: none;
+	border-color: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+.ui-state-default.headerColoumn {
+	text-align: left;
+}
+
+/* the div container contains one div and one dataTable */
+.employee-container {
+	width: 100%;
+	height: 100%;
+	margin: 0px 0 40px 0;
+}
+
+/* this is for the New Employee Button  */
+.newEmpBtn {
+	border: white;
+	float: right;
+	background-color: #ffffff !important;
+	font-size: 15px;
+	color: #4dc3f9 !important;
+}
+
+.output {
+	float: right;
+	font-size: 15px;
+	color: #4dc3f9 !important;
+	margin: 5px 5px 5px 5px;
+}
+
+.displayLogIn {
+	float: right;
+	font-size: 15px;
+	height: 61px;
+	padding: 10px 5px 0 0;
+}
+
+.header-bg {
+	background-color: #F0F8FF;
+}
+
+.mainPageGrid {
+	width: 350px;
+	align-items: center;
+	float: center;
+}
+
+/*  This is to clear input text box showdow in dialog*/
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield
+	{
+	box-shadow: none;
+}
+
+/* this is dialog title bar */
+.ui-dialog .ui-dialog-titlebar {
+	background-color: rgb(26, 183, 234);
+	color: white;
+	text-shadow: none;
+	font-size: 22px;
+}
+
+/* this is div two buttons in dialog */
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left.btnCancelSave
+	{
+	border: white;
+	font-size: 15px;
+	box-sizing: border-box;
+	height: 30px;
+	text-align: left;
+	background: none;
+	background-color: #f2f5f9;
+	text-shadow: none;
+}
+
+/* this is div two buttons in dialog */
+.cancelAndSave {
+	float: right;
+	margin-right: 12px;
+}
+
+#idForDialog .ui-icon-closethick {
+	background-image:
+		url(/demo/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
+}
+
+#idForUpdateDialog .ui-icon-closethick {
+	background-image:
+		url(/demo/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
+}
+
+/* this is to show the validation error with red text box in Add dialog*/
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error
+	{
+	border: 2px solid #cd0a0a;
+}
+
+/* this is for the select menu list color in Add and Update dialog */
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	text-shadow: none;
+	color: #4f4f4f;
+	background: none;
+}
+/* this is for the select menu highlight */
+.ui-state-highlight, .ui-widget-content .ui-state-highlight,
+	.ui-widget-header .ui-state-highlight {
+	background: rgb(68, 195, 238);
+}
+
+.input:-internal-autofill-selected {
+	background-color: black;
+}
+/*this for column to break down by line*/
+.container td.headerColoumn {
+	overflow-wrap: break-word;
+	white-space: normal;
+}
+
+.white-color {
+	color: white;
+}
+
+.updateDialog td.ui-panelgrid-cell {
+	padding: 4px 20px 4px 10px;
+}
+
+.updatePageGrid tr, .updatePageGrid td, .updatePageGrid.ui-panelgrid .ui-panelgrid-cell
+	{
+	border: none;
+}
+
+.updatePageGrid {
+	width: 100%;
+}
+
+/* this is for text box width in dialog */
+.col-half {
+	width: 4% !important;;
+}
+
+.col-1 {
+	width: 8.33% !important;
+}
+
+.col-2 {
+	width: 16.66% !important;
+}
+
+.col-3 {
+	width: 25% !important;
+}
+
+.col-4 {
+	width: 33.33% !important;
+}
+
+.col-5 {
+	width: 41.66% !important;
+}
+
+.col-6 {
+	width: 50% !important;
+}
+
+.col-7 {
+	width: 58.33% !important;
+}
+
+.col-8 {
+	width: 66.66% !important;
+}
+
+.col-9 {
+	width: 75% !important;
+}
+
+.col-10 {
+	width: 83.33% !important;
+}
+
+.col-11 {
+	width: 91.66% !important;
+}
+
+.col-12 {
+	width: 100% !important;
+}
+
+/*end box width dialog*/
+.width-92 {
+	min-width: 92%;
+}
+
+.red-icon {
+	color: red;
+}
+
+.orange-icon {
+	color: #d98d00;
+}
+
+.blue-icon {
+	color: rgb(26, 183, 234);
+}
+
+.footer {
+	left: 0;
+	background-position: center;
+	text-align: center;
+	background: none repeat scroll 0 0 #f2f5f9;
+	padding: 1px 0;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	margin-top: 20px;
+}
+
+.footer .footer-text {
+	font-size: 1.1em !important;
+}
+
+.jq-toast-single {
+	width: 100px;
+}
+
+.ui-float-label {
+	display: block;
+	position: relative;
+}
+
+#addEmployeeForm\:float-input {
+	display: block;
+	position: absolute;
+}
+
+/*reponsive*/
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+@media only screen and (max-width: 760px) , ( min-device-width : 768px)
+	and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+		margin: 0 0 1rem 0;
+	}
+	tr:nth-child(odd) {
+		background: #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 0;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+	/*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+	/*
+	td:nth-of-type(1):before {
+		content: "First Name";
+	}
+	td:nth-of-type(2):before {
+		content: "Last Name";
+	}
+	td:nth-of-type(3):before {
+		content: "Job Title";
+	}
+	td:nth-of-type(4):before {
+		content: "Favorite Color";
+	}
+	td:nth-of-type(5):before {
+		content: "Wars of Trek?";
+	}
+	td:nth-of-type(6):before {
+		content: "Secret Alias";
+	}
+	td:nth-of-type(7):before {
+		content: "Date of Birth";
+	}
+	td:nth-of-type(8):before {
+		content: "Dream Vacation City";
+	}
+	td:nth-of-type(9):before {
+		content: "GPA";
+	}
+	td:nth-of-type(10):before {
+		content: "Arbitrary Data";
+	}
+}
+*/
+	/*end reponsive*/
+	.footer .footer-text {
+		font-size: 0.875em !important;
+		font-style: italic;
+		font-weight: bold;
+	}
+}
+
+body .ui-paginator .ui-paginator-rpp-options {
+	width: 3% !important;
+}
+
+body .ui-paginator {
+	border: none;;
+}
+
+.ui-button.ui-button-text-icon-left .ui-icon {
+	color: #4dc3f9;
+}
+
+body .ui-datatable thead th {
+	border: none;
+	border-radius: 0px;
+}
+
+/* Customize Scrollbar */
+::-webkit-scrollbar {
+	width: 3px;
+}
+
+::-webkit-scrollbar-track {
+	background: #FFF;
+	-webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #CCC;
+	-webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+span.ui-button-text.ui-c {
+	background-color: transparent;
+}
+
+.ui-column-filter {
+	display: none !important;
+}
+
+/*search form*/
+.search-form-container {
+	background-color: white;
+}
+
+body .ui-datatable .ui-datatable-header {
+	background-color: white !important;
+	height: 80px;
+	padding-left: 3em;
+}
+
+.search-form-input {
+	padding: 5px;
+	height: 40px !important;
+	text-align: left;
+	float: left;
+	margin-right: 15px !important;
+}
+
+.search-form-button {
+	font-size: 1.2em !important;
+	float: left;
+	display: inline-block;
+	margin-top: 5px !important;
+}

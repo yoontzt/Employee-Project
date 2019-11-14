@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:of="http://omnifaces.org/functions">
+
+	<h:outputStylesheet library="library"
+		name="materialize/css/materialize.min.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="header.css"></h:outputStylesheet>
+
+
+	<header class="header" id="employee-header">
+		<div class="ui-g-12">
+			<h:form id="navigation">
+				<div class="ui-g-1">
+					<p:commandButton icon="fa fa-home" value="BackToHome" tabindex="12"
+						styleClass="left"
+						onclick="window.location.href ='#{request.contextPath}/employee-list.xhtml'"
+						immediate="true"></p:commandButton>
+				</div>
+
+
+				<div class="displayLogIn">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText
+							value="Logged as #{loginController.tokenDto.displayname}"
+							styleClass="output" />
+						<p:commandButton value="Log Out"
+							action="#{loginController.logout}"
+							styleClass="aavn-active-button newEmpBtn">
+							<p:confirm header="Confirmation"
+								message="Are you sure to logout?"
+								icon="fa fa-exclamation-triangle" />
+						</p:commandButton>
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</div>
+	</header>
+
+	<!-- confirm dialog -->
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+		styleClass="aavn-confirm-dialog">
+		<div class="cancelAndSave">
+			<p:commandButton value="Yes" type="button"
+				styleClass="aavn-active-button ui-confirmdialog-yes"
+				icon="fa fa-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="aavn-inactive-button ui-confirmdialog-no"
+				icon="fa fa-times" />
+		</div>
+	</p:confirmDialog>
+
+</ui:composition>
